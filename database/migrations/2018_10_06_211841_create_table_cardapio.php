@@ -13,7 +13,15 @@ class CreateTableCardapio extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('cardapio', function(Blueprint $table){
+            $table -> increments('id_item_cardapio');
+            $table -> text('nome_item_cardapio');
+            $table -> text('descricao_item_cardapio');
+            $table -> float('preco_item_cardapio', 8, 2);
+            $table -> boolean('entrega_item_cardapio');
+            $table -> timestamps();
+            $table -> softDeletes();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class CreateTableCardapio extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('cardapio');
     }
 }

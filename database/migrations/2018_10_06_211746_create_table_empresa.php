@@ -13,7 +13,16 @@ class CreateTableEmpresa extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('empresa', function(Blueprint $table){
+            $table -> increments('id_empresa');
+            $table -> integer('id_usuario_responsavel');
+            $table -> text('nome_empresa');
+            $table -> text('descricao_empresa');
+            $table -> text('endereco_empresa');
+            $table -> text('telefone_empresa');
+            $table -> timestamps();
+            $table -> softDeletes();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class CreateTableEmpresa extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('empresa');
     }
 }

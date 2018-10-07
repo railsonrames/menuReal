@@ -13,7 +13,15 @@ class CreateTableUsuario extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('usuario', function(Blueprint $table){
+            $table -> increments('id_usuario');
+            $table -> text('nome_usuario');
+            $table -> text('senha_usuario');
+            $table -> text('email_usuario');
+            $table -> boolean('administrador_usuario');
+            $table -> timestamps();
+            $table -> softDeletes();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class CreateTableUsuario extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('usuario');
     }
 }
