@@ -19,6 +19,7 @@ class CreateTableCardapio extends Migration
             $table -> text('descricao_item_cardapio');
             $table -> float('preco_item_cardapio', 8, 2);
             $table -> boolean('entrega_item_cardapio');
+            $table -> text('url_imagem_item_cardapio');
             $table -> timestamps();
             $table -> softDeletes();
         });
