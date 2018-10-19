@@ -17,8 +17,9 @@ class CreateTableUsuario extends Migration
             $table -> increments('id_usuario');
             $table -> text('nome_usuario');
             $table -> text('senha_usuario');
-            $table -> text('email_usuario');
+            $table -> string('email_usuario')->unique();
             $table -> boolean('administrador_usuario');
+            $table -> timestamp('email_verificado_em')->nullable();
             $table -> timestamps();
             $table -> softDeletes();
         });
@@ -31,6 +32,6 @@ class CreateTableUsuario extends Migration
      */
     public function down()
     {
-        Schema::drop('usuario');
+        Schema::dropIfExists('usuario');
     }
 }

@@ -82,13 +82,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                @php
-                    $hora = new DateTime();
-                    if ($hora->format('H') < 15)
-                    echo 'Onde vamos almoçar hoje?';
-                    else
-                    echo 'Onde vamos jantar hoje?';
-                @endphp
+                    Pegadinha do malandro, rá, glu-glú!
+                    <br>
+                    Seria você o {{$name}}?
+                    <br>
+                    Olha a hora 
                 </div>
 
                 <div class="links">
