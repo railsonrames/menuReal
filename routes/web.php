@@ -11,7 +11,40 @@
 |
 */
 
+
 Route::get('/', function () {
+//    $sql = 'SELECT * FROM users WHERE id = ?';
+//    $users = \DB::select($sql, [29]);
+//    $users = \DB::table('users')
+//        ->where('id', 29)
+//        ->get();
+//        ->select('name','id')
+//        ->first();
+//        ->toSql();
+//    $users = \App\User::all();
+//    dd($users);
+//
+//$usuarios = \App\Usuario::where('id_usuario',1)->select('id_usuario','nome_usuario')->first();
+//dd($usuarios);
+//
+//    $user = new \App\User;
+//
+//    $user = \App\User::find(31);
+//
+//    $user->name = 'Railson Ramés';
+//    $user->email = 'railson.rames@gmail.com';
+//    $user->password = bcrypt('123456');
+//
+//    $user->save();
+
+//    $userData = [
+//        'name' => 'Joaquin Roriz Júnior'
+//    ];
+
+//    $user = \App\User::whereIn('id',[29,30,2]);
+//    $user->delete();
+
+
     return view('welcome');
 });
 
@@ -20,3 +53,8 @@ Route::get('/hello/{name}', function($name){
 });
 
 Route::resource('cardapio','CardapioController');
+
+Route::get('/users','UserController@index');
+Route::get('/users/{id}','UserController@show');
+
+Route::resource('/usuarios','UsuarioController');

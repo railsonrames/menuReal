@@ -20,6 +20,8 @@ class CreateTableEmpresa extends Migration
             $table -> text('descricao_empresa');
             $table -> text('endereco_empresa');
             $table -> text('telefone_empresa');
+            $table -> text('bairro_empresa');
+            $table -> text('cidade_empresa');
             $table -> timestamps();
             $table -> softDeletes();
         });
