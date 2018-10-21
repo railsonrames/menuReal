@@ -11,7 +11,7 @@ class EmpresaTableSeeder extends Seeder
      */
     public function run()
     {
-        $empresa = new \App\Empresa();
+        $empresa = new \App\Restaurante();
         $empresa->create([
             'nome_empresa' => 'Saborear',
             'descricao_empresa' => 'Tradicional self-service à quilo com grande variedade de pratos típicamente originários da culinária mineira, churrasco, massas e saladas de alto padrão.',

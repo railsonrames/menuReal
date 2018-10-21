@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', function () {
+//Route::get('/', function () {
 //    $sql = 'SELECT * FROM users WHERE id = ?';
 //    $users = \DB::select($sql, [29]);
 //    $users = \DB::table('users')
@@ -36,25 +36,45 @@ Route::get('/', function () {
 //    $user->password = bcrypt('123456');
 //
 //    $user->save();
-
+//
 //    $userData = [
 //        'name' => 'Joaquin Roriz Júnior'
 //    ];
-
+//
 //    $user = \App\User::whereIn('id',[29,30,2]);
 //    $user->delete();
+//    $users = [
+//        ['name' => 'Railson Ramés Sousa', 'email' => 'railson@msn.com'],
+//        ['name' => 'Rayanne de Brito Uchoa', 'email' => 'ryuchoa@hotmail.com'],
+//        ['name' => 'Banda Calcinha Preta', 'email' => 'calcinha@preta.com.br']
+//    ];
+//    $usuarios = \App\User::all();
+//
+//    return view('welcome', compact('usuarios'));
+//});
+//
+//Route::get('/hello/{name}', function ($name) {
+//    return view('hello', compact('name'));
+//});
+//
+//Route::resource('cardapio', 'CardapioController');
+//
+//Route::get('/users', 'UserController@index');
+//Route::get('/users/{id}', 'UserController@show');
+//
+//Route::resource('/usuarios', 'UsuarioController');
+//
+//Route::view('/view', 'view', ['name' => 'Railson'])->middleware(\App\Http\Middleware\TestCheck::class);
 
 
-    return view('welcome');
+Route::get('/', function () {
+    return view('inicio');
 });
 
-Route::get('/hello/{name}', function($name){
-    return view('hello', compact('name'));
+Route::prefix('/administracao')->group(function () {
+    Route::get('restaurante', 'Administracao\\RestauranteController@index')->name('restaurante.index');
+    Route::get('restaurante/novo', 'Administracao\\RestauranteController@new')->name('restaurante.new');
+    Route::post('restaurante/store', 'Administracao\\RestauranteController@store')->name('restaurante.store');
+    Route::get('restaurante/editar/{restaurante}', 'Administracao\\RestauranteController@edit')->name('restaurante.edit');
+    Route::post('restaurante/atualizar/{id}', 'Administracao\\RestauranteController@update')->name('restaurante.update');
 });
-
-Route::resource('cardapio','CardapioController');
-
-Route::get('/users','UserController@index');
-Route::get('/users/{id}','UserController@show');
-
-Route::resource('/usuarios','UsuarioController');

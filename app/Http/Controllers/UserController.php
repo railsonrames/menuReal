@@ -16,8 +16,14 @@ class UserController extends Controller
         return $users;
     }
 
-    public function show($id){
-        $user = User::findOrFail($id);
-        return $user;
+    public function show($id, Request $request){
+//        $user = User::findOrFail($id);
+
+        $headers = $request->header('user-agent');
+        dd($headers);
+
+        return response('Hello world!',200)
+//            ->header('ContentType', 'Application/json')
+            ;
     }
 }
