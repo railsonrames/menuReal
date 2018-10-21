@@ -9,7 +9,9 @@ use App\Http\Controllers\Controller;
 class RestauranteController extends Controller
 {
     public function index(){
-        return Restaurante::all();
+        $restaurantes = Restaurante::all();
+
+        return view('administracao.restaurante.index', compact('restaurantes'));
     }
 
     public function new(){
@@ -39,5 +41,12 @@ class RestauranteController extends Controller
         $restaurante->update($restauranteData);
 
         print 'Restaurante atualizado com sucesso!';
+    }
+
+    public function delete($id){
+        $restaurante = Restaurante::findOrFail($id);
+        $restaurante->delete();
+
+        print 'Restaurante removido com sucesso!';
     }
 }

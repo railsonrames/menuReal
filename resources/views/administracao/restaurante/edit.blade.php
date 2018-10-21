@@ -25,7 +25,7 @@
         <input type="text" name="telefone" id="" value="{{$restaurante->telefone}}">
     </div>
     <div class="form-group">
-        <label for="">Descirção do restaurante:</label>
+        <label for="">Descrição do restaurante:</label>
         <textarea name="descricao" id="" cols="30" rows="10">{{$restaurante->descricao}}    </textarea>
     </div>
     <div class="form-group">
