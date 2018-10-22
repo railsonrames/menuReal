@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Administracao;
 
+use App\Http\Requests\CreateRestauranteRequest;
 use App\Restaurante;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class RestauranteController extends Controller
@@ -18,8 +18,10 @@ class RestauranteController extends Controller
         return view('administracao.restaurante.store');
     }
 
-    public function store(Request $request){
+    public function store(CreateRestauranteRequest $request){
         $restauranteData = $request->all();
+
+        $request->validated();
 
         $restaurante = new Restaurante();
         $restaurante->create($restauranteData);
@@ -33,9 +35,11 @@ class RestauranteController extends Controller
 
     }
 
-    public function update(Request $request, $id){
+    public function update(CreateRestauranteRequest $request, $id){
 
         $restauranteData = $request->all();
+
+        $request->validated();
 
         $restaurante = Restaurante::findOrFail($id);
         $restaurante->update($restauranteData);

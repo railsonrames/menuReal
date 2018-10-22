@@ -71,11 +71,18 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::prefix('/administracao')->group(function () {
-    Route::get('restaurante', 'Administracao\\RestauranteController@index')->name('restaurante.index');
-    Route::get('restaurante/novo', 'Administracao\\RestauranteController@new')->name('restaurante.new');
-    Route::post('restaurante/store', 'Administracao\\RestauranteController@store')->name('restaurante.store');
-    Route::get('restaurante/editar/{restaurante}', 'Administracao\\RestauranteController@edit')->name('restaurante.edit');
-    Route::post('restaurante/atualizar/{id}', 'Administracao\\RestauranteController@update')->name('restaurante.update');
-    Route::get('restaurante/excluir/{id}', 'Administracao\\RestauranteController@delete')->name('restaurante.delete');
+Route::group(['middleware' => ['auth']], function(){
+    Route::prefix('/administracao')->group(function () {
+        Route::get('restaurante', 'Administracao\\RestauranteController@index')->name('restaurante.index');
+        Route::get('restaurante/novo', 'Administracao\\RestauranteController@new')->name('restaurante.new');
+        Route::post('restaurante/store', 'Administracao\\RestauranteController@store')->name('restaurante.store');
+        Route::get('restaurante/editar/{restaurante}', 'Administracao\\RestauranteController@edit')->name('restaurante.edit');
+        Route::post('restaurante/atualizar/{id}', 'Administracao\\RestauranteController@update')->name('restaurante.update');
+        Route::get('restaurante/excluir/{id}', 'Administracao\\RestauranteController@delete')->name('restaurante.delete');
+    });
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
