@@ -23,10 +23,12 @@ class userController extends Controller
 
         $request->validated();
 
-        $user = new User();
-        $user->create($userData);
+        $userData['password'] = bcrypt($userData['password']);
 
-        print 'Usuario criado com sucesso!';
+        $users = new User();
+        $users->create($userData);
+
+        print 'Usuário criado com sucesso!';
     }
 
     public function edit(user $user){

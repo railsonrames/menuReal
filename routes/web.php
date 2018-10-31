@@ -13,16 +13,16 @@
 
 
 //Route::get('/', function () {
-//    $sql = 'SELECT * FROM users WHERE id = ?';
-//    $users = \DB::select($sql, [29]);
-//    $users = \DB::table('users')
+//    $sql = 'SELECT * FROM user WHERE id = ?';
+//    $user = \DB::select($sql, [29]);
+//    $user = \DB::table('user')
 //        ->where('id', 29)
 //        ->get();
 //        ->select('name','id')
 //        ->first();
 //        ->toSql();
-//    $users = \App\User::all();
-//    dd($users);
+//    $user = \App\User::all();
+//    dd($user);
 //
 //$usuarios = \App\Usuario::where('id_usuario',1)->select('id_usuario','nome_usuario')->first();
 //dd($usuarios);
@@ -43,7 +43,7 @@
 //
 //    $user = \App\User::whereIn('id',[29,30,2]);
 //    $user->delete();
-//    $users = [
+//    $user = [
 //        ['name' => 'Railson Ramés Sousa', 'email' => 'railson@msn.com'],
 //        ['name' => 'Rayanne de Brito Uchoa', 'email' => 'ryuchoa@hotmail.com'],
 //        ['name' => 'Banda Calcinha Preta', 'email' => 'calcinha@preta.com.br']
@@ -59,8 +59,8 @@
 //
 //Route::resource('cardapio', 'CardapioController');
 //
-//Route::get('/users', 'UserController@index');
-//Route::get('/users/{id}', 'UserController@show');
+//Route::get('/user', 'UserController@index');
+//Route::get('/user/{id}', 'UserController@show');
 //
 //Route::resource('/usuarios', 'UsuarioController');
 //
@@ -72,13 +72,23 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::prefix('/administracao')->group(function () {
-        Route::get('restaurante', 'Administracao\\RestauranteController@index')->name('restaurante.index');
-        Route::get('restaurante/novo', 'Administracao\\RestauranteController@new')->name('restaurante.new');
-        Route::post('restaurante/store', 'Administracao\\RestauranteController@store')->name('restaurante.store');
-        Route::get('restaurante/editar/{restaurante}', 'Administracao\\RestauranteController@edit')->name('restaurante.edit');
-        Route::post('restaurante/atualizar/{id}', 'Administracao\\RestauranteController@update')->name('restaurante.update');
-        Route::get('restaurante/excluir/{id}', 'Administracao\\RestauranteController@delete')->name('restaurante.delete');
+    Route::prefix('/administracao')->namespace('Administracao')->group(function () {
+        Route::prefix('restaurante')->group(function () {
+            Route::get('/', 'RestauranteController@index')->name('restaurante.index');
+            Route::get('novo', 'RestauranteController@new')->name('restaurante.new');
+            Route::post('store', 'RestauranteController@store')->name('restaurante.store');
+            Route::get('editar/{restaurante}', 'RestauranteController@edit')->name('restaurante.edit');
+            Route::post('atualizar/{id}', 'RestauranteController@update')->name('restaurante.update');
+            Route::get('excluir/{id}', 'RestauranteController@delete')->name('restaurante.delete');
+        });
+        Route::prefix('user')->group(function () {
+            Route::get('/', 'UserController@index')->name('user.index');
+            Route::get('novo', 'UserController@new')->name('user.new');
+            Route::post('store', 'UserController@store')->name('user.store');
+            Route::get('editar/{user}', 'UserController@edit')->name('user.edit');
+            Route::post('atualizar/{id}', 'UserController@update')->name('user.update');
+            Route::get('excluir/{id}', 'UserController@delete')->name('user.delete');
+        });
     });
 });
 

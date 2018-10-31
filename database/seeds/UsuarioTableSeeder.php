@@ -11,12 +11,12 @@ class UsuarioTableSeeder extends Seeder
      */
     public function run()
     {
-        $usuario = new \App\Usuario();
-        $usuario->create([
-            'nome_usuario' => 'Railson Ramés Sousa',
-            'senha_usuario' => bcrypt('12345678'),
-            'email_usuario' => 'railson.rames@gmail.com',
-            'administrador_usuario' => true
-        ]);
+//        $usuario = new \App\Usuario();
+//        $usuario->create([
+//            'nome_usuario' => 'Railson Ramés Sousa',
+//            'senha_usuario' => bcrypt('12345678'),
+//            'email_usuario' => 'railson.rames@gmail.com',
+//            'administrador_usuario' => true
+//        ]);
     }
 }

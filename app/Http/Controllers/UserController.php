@@ -8,7 +8,7 @@ use App\User;
 class UserController extends Controller
 {
     public function index(){
-//        $users = \App\User::where('id',31)
+//        $user = \App\User::where('id',31)
 //                        ->select('name','id')
 //                        ->get();
         $users = User::all();
